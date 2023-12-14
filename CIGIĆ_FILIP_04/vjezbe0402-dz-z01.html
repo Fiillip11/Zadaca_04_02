@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izračun sredina</title>
+</head>
+<body>
+
+<script>
+
+    function izracunajAritmetickuSredinu(brojevi) {
+        var suma = 0;
+        for (var i = 0; i < brojevi.length; i++) {
+            suma += parseInt(brojevi[i], 10);
+        }
+        return suma / brojevi.length;
+    }
+
+    function izracunajGeometrijskuSredinu(brojevi) {
+        var produkt = 1;
+        for (var i = 0; i < brojevi.length; i++) {
+            produkt *= parseInt(brojevi[i], 10);
+        }
+        return Math.pow(produkt, 1 / brojevi.length);
+    }
+
+
+    function izracunajSredine() {
+        var unos = prompt("Unesite skup prirodnih brojeva odvojenih zarezom (npr. 1, 4, 16):");
+        var brojevi = unos.split(',').map(function(item) {
+            return item.trim();
+        });
+
+        var aritmetickaSredina = izracunajAritmetickuSredinu(brojevi);
+        var geometrijskaSredina = izracunajGeometrijskuSredinu(brojevi);
+
+
+        var rezultatContainer = document.createElement('div');
+        rezultatContainer.innerHTML = "<p>Uneseni brojevi: " + brojevi.join(', ') + "</p>" +
+                                       "<p>Aritmetička sredina: " + aritmetickaSredina.toFixed(2) + "</p>" +
+                                       "<p>Geometrijska sredina: " + geometrijskaSredina.toFixed(2) + "</p>";
+
+        document.body.appendChild(rezultatContainer);
+    }
+
+
+    window.onload = function() {
+        izracunajSredine();
+    };
+</script>
+
+</body>
+</html>

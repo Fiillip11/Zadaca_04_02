@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prikaz Ocjene</title>
+</head>
+<body>
+
+<form id="formaOcjene">
+    <label for="ocjena">Unesite ocjenu (1-5): </label>
+    <input type="number" id="ocjena" name="ocjena" min="1" max="5" required>
+    <button type="button" onclick="prikaziOpisOcjene()">Prikaži opis ocjene</button>
+</form>
+
+<p id="opisOcjene"></p>
+
+<script>
+    function prikaziOpisOcjene() {
+        var ocjenaInput = document.getElementById('ocjena');
+        var ocjena = parseInt(ocjenaInput.value, 10);
+        var opisOcjeneParagraf = document.getElementById('opisOcjene');
+
+        if (ocjena >= 1 && ocjena <= 5) {
+            var opisOcjene = '';
+
+            switch (ocjena) {
+                case 1:
+                    opisOcjene = 'Nedovoljan';
+                    break;
+                case 2:
+                    opisOcjene = 'Dovoljan';
+                    break;
+                case 3:
+                    opisOcjene = 'Dobar';
+                    break;
+                case 4:
+                    opisOcjene = 'Vrlo dobar';
+                    break;
+                case 5:
+                    opisOcjene = 'Odličan';
+                    break;
+            }
+
+            opisOcjeneParagraf.textContent = 'Ocjena ' + ocjena + ' znači: ' + opisOcjene;
+        } else {
+            opisOcjeneParagraf.textContent = 'Molimo unesite ocjenu u rasponu od 1 do 5.';
+        }
+    }
+</script>
+
+</body>
+</html>
